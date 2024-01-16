@@ -3,56 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submission</title>
+    <title>Fraud Claim Detector</title>
+    <style>
+        fieldset {
+            padding: 50 40px; /* Adjust this value as needed */
+            border: 1px solid rgb(0, 0, 0); /* Example border, style as needed */
+            margin-bottom: 20px; /* Adds space between each fieldset */
+        }
+        legend {
+            font-size: 1.2em; /* Change this value to increase the font size */
+            font-weight: bold;
+        }
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 600px; margin: auto; }
+        .form-group { margin-bottom: 15px; }
+        label {display: block; margin-bottom: 5px;}
+        input[type="text"], input[type="date"], select { width: 95%; padding: 8px; }
+        input[type="radio"] { margin-right: 5px; }
+        .form-group.inline { display: flex; align-items: center; gap: 9px;}
+        .form-group.inline label { margin: 0; }
+        .submit-btn { background-color: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        .submit-btn:hover { background-color: #45a049; }
+    </style>
 </head>
 <body>
-    <h1>Form Input</h1>
-    <form action="/" method="POST">
-            
-        <label for="inpatient">Inpatient</label>
-        <input type="radio" id="inpatient" name="patientType" value="inpatient">
-      
-        <label for="outpatient">Outpatient</label>
-        <input type="radio" id="outpatient" name="patientType" value="outpatient"><br><br>
+    <div class="container">
+        <h1>Fraud Claim Detector</h1>
+        <form action="/" method="POST">
+            <fieldset>
+                <legend>Patient Type</legend>
+                <div class="form-group inline">
+                    <input type="radio" id="inpatient" name="patientType" value="inpatient">
+                    <label for="inpatient">Inpatient</label>
+                    <input type="radio" id="outpatient" name="patientType" value="outpatient">
+                    <label for="outpatient">Outpatient</label>
+                </div>
+            </fieldset>
 
-        <label for="ClaimStartDt">Claim Start Date:</label>
-        <input type="date" id="ClaimStartDt" name="ClaimStartDt"><br><br>
+            <fieldset>
+                <legend>Claim Details</legend>
+                <div class="form-group">
+                    <label for="ClaimStartDt">Claim Start Date:</label>
+                    <input type="date" id="ClaimStartDt" name="ClaimStartDt">
+                </div>
+                <div class="form-group">
+                    <label for="ClaimEndDt">Claim End Date:</label>
+                    <input type="date" id="ClaimEndDt" name="ClaimEndDt">
+                </div>
+                <div class="form-group">
+                    <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed:</label>
+                    <input type="text" id="InscClaimAmtReimbursed" name="InscClaimAmtReimbursed">
+                </div>
+            </fieldset>
 
-        <label for="ClaimEndDt">Claim End Date:</label>
-        <input type="date" id="ClaimEndDt" name="ClaimEndDt"><br><br>
 
-        <label for="AttendingPhysician">Attending Physician:</label>
-        <input type="text" id="AttendingPhysician" name="AttendingPhysician"><br><br>
+            <fieldset>
+                <legend>Beneficiary Information</legend>
 
-        <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed:</label>
-        <input type="text" id="InscClaimAmtReimbursed" name="InscClaimAmtReimbursed"><br><br>
+                <div class="form-group">
+                    <label for="State">State:</label>
+                    <input type="text" id="State" name="State">
+                </div>
 
-        <label for="IPAnnualReimbursementAmt">IP Annual Reimbursement Amount:</label>
-        <input type="text" id="IPAnnualReimbursementAmt" name="IPAnnualReimbursementAmt"><br><br>
+                <div class="form-group">
+                    <label for="Race">Race:</label>
+                    <input type="text" id="Race" name="Race">
+                </div>
 
-        <label for="Race">Race:</label>
-        <input type="text" id="Race" name="Race"><br><br>
+                <div class="form-group">
+                    <label for="IPAnnualReimbursementAmt">Inpatient Annual Reimbursement Amount:</label>
+                    <input type="text" id="IPAnnualReimbursementAmt" name="IPAnnualReimbursementAmt">
+                </div>
 
-        <label for="State">State:</label>
-        <input type="text" id="State" name="State"><br><br>
+            </fieldset>
 
-        <label for="ClmAdmitDiagnosisCode">Claim Admit Diagnosis Code:</label>
-        <input type="text" id="ClmAdmitDiagnosisCode" name="ClmAdmitDiagnosisCode"><br><br>
+            <fieldset>
+                <legend>Physician, Diagnosis and Procedure Codes</legend>
+                <div class="form-group">
+                    <label for="AttendingPhysician">Attending Physician:</label>
+                    <input type="text" id="AttendingPhysician" name="AttendingPhysician">
+                </div>
+                <div class="form-group">
+                    <label for="ClmAdmitDiagnosisCode">Claim Admit Diagnosis Code:</label>
+                    <input type="text" id="ClmAdmitDiagnosisCode" name="ClmAdmitDiagnosisCode">
+                </div>
+                <div class="form-group">
+                    <label for="DiagnosisGroupCode">Diagnosis Group Code:</label>
+                    <input type="text" id="DiagnosisGroupCode" name="DiagnosisGroupCode">
+                </div>
+                <div class="form-group">
+                    <label for="ClmDiagnosisCode_1">Claim Diagnosis Code:</label>
+                    <input type="text" id="ClmDiagnosisCode_1" name="ClmDiagnosisCode_1">
+                </div>
+                <div class="form-group">
+                    <label for="ClmProcedureCode_1">Claim Procedure Code:</label>
+                    <input type="text" id="ClmProcedureCode_1" name="ClmProcedureCode_1">
+                </div>
+                <!-- Repeat this pattern for other fields like Claim Diagnosis Code, Claim Procedure Code, etc. -->
+            </fieldset>
 
-        <label for="DiagnosisGroupCode">Diagnosis Group Code:</label>
-        <input type="text" id="DiagnosisGroupCode" name="DiagnosisGroupCode"><br><br>
+<!-- Submit Button -->
+<input class="submit-btn" type="submit" value="Submit">
 
-        <label for="ClmDiagnosisCode_1">Claim Diagnosis Code:</label>
-        <input type="text" id="ClmDiagnosisCode_1" name="ClmDiagnosisCode_1"><br><br>
-
-        <label for="ClmProcedureCode_1">Claim Procedure Code:</label>
-        <input type="text" id="ClmProcedureCode_1" name="ClmProcedureCode_1"><br><br>
-
-        
-        <input type="submit" value="Submit">
-    </form>
-
-    <p>  {{ pred }}   </p>
+<!-- Place this section where you want the prediction result to appear -->
+{% if pred %}
+<div id="predictionResult">
+    <p><h3>{{ pred }}</h3></p>
+</div>
+{% endif %}
 
 </body>
 </html>
