@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+</head>
+<body>
+    <h1>Form Input</h1>
+    <form action="/" method="POST">
+            
+        <label for="inpatient">Inpatient</label>
+        <input type="radio" id="inpatient" name="patientType" value="inpatient">
+      
+        <label for="outpatient">Outpatient</label>
+        <input type="radio" id="outpatient" name="patientType" value="outpatient"><br><br>
+
+        <label for="ClaimStartDt">Claim Start Date:</label>
+        <input type="date" id="ClaimStartDt" name="ClaimStartDt"><br><br>
+
+        <label for="ClaimEndDt">Claim End Date:</label>
+        <input type="date" id="ClaimEndDt" name="ClaimEndDt"><br><br>
+
+        <label for="AttendingPhysician">Attending Physician:</label>
+        <input type="text" id="AttendingPhysician" name="AttendingPhysician"><br><br>
+
+        <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed:</label>
+        <input type="text" id="InscClaimAmtReimbursed" name="InscClaimAmtReimbursed"><br><br>
+
+        <label for="IPAnnualReimbursementAmt">IP Annual Reimbursement Amount:</label>
+        <input type="text" id="IPAnnualReimbursementAmt" name="IPAnnualReimbursementAmt"><br><br>
+
+        <label for="Race">Race:</label>
+        <input type="text" id="Race" name="Race"><br><br>
+
+        <label for="State">State:</label>
+        <input type="text" id="State" name="State"><br><br>
+
+        <label for="ClmAdmitDiagnosisCode">Claim Admit Diagnosis Code:</label>
+        <input type="text" id="ClmAdmitDiagnosisCode" name="ClmAdmitDiagnosisCode"><br><br>
+
+        <label for="DiagnosisGroupCode">Diagnosis Group Code:</label>
+        <input type="text" id="DiagnosisGroupCode" name="DiagnosisGroupCode"><br><br>
+
+        <label for="ClmDiagnosisCode_1">Claim Diagnosis Code:</label>
+        <input type="text" id="ClmDiagnosisCode_1" name="ClmDiagnosisCode_1"><br><br>
+
+        <label for="ClmProcedureCode_1">Claim Procedure Code:</label>
+        <input type="text" id="ClmProcedureCode_1" name="ClmProcedureCode_1"><br><br>
+
+        
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>  {{ pred }}   </p>
+
+</body>
+</html>
