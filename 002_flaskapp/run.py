@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template,Markup
 import json
 import numpy as np
 import joblib
@@ -39,7 +39,7 @@ def index():
         data = {}
 
         if not patient_type:
-            pred = "Please select claim type(Inpatient/Outpatient)."
+            pred = "Please select the Patient Type."
             return render_template("index.html", pred = pred, form_data = form_data)
 
         if patient_type=="inpatient":
@@ -128,9 +128,12 @@ def index():
         prob = model.predict_proba(df_transform)[0][1] * 100
         print(prob)
         if pred[0] == 0:
-            pred = f"This may not be a fraudulent claim due to its probability {prob:.2f}%"
+            pred = Markup(f"Prediction Result:<br><br> The analyzed claim has a low likelihood of fraud with an estimated probability of only {prob:.2f}%. <br>"
+                    "It is likely to be a legitimate claim. ")
         else:
-            pred = f"Note! This may be a fraudulent claim due to its probability {prob:.2f}%"
+            pred = Markup(f"Prediction Result:<br><br> Attention! The analyzed claim has a high likelihood of fraud with an estimated probability of {prob:.2f}%. <br>"
+                    "Further investigation is strongly recommended to determine the accuracy of the claim.")
+
         
         return render_template("index.html", pred = pred, form_data = form_data)
     
